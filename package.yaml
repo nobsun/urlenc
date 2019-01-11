@@ -1,5 +1,5 @@
 name:                urlenc
-version:             1.1.0.0
+version:             1.2.0.0
 github:              "githubuser/urlenc"
 license:             BSD3
 author:              "Author name here"
@@ -22,6 +22,8 @@ description:         Please see the README on GitHub at <https://github.com/gith
 dependencies:
 - base >= 4.7 && < 5
 - url >= 2.1
+- base64-bytestring >= 1.0
+- utf8-string >= 1.0
 
 library:
   source-dirs: src
@@ -29,6 +31,16 @@ library:
 executables:
   perenc:
     main:                percentEncode.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - urlenc
+
+  formenc:
+    main:                formUrlEncode.hs
     source-dirs:         app
     ghc-options:
     - -threaded
